@@ -9,7 +9,10 @@ const BrandProducts = () => {
     const filteredProducts = products.filter(product => product.brandName === brandName);
 
     if (filteredProducts.length === 0) {
-        return <div>No products found for this brand</div>;
+        return <div className="alert alert-info my-20 max-w-fit mx-auto bg-[#800000] text-white text-2xl font-bold ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>There is no product available for this brand</span>
+        </div>;
     }
 
     return (
@@ -104,7 +107,7 @@ const BrandProducts = () => {
 
                                     </Link>
                                     <Link to={`/updateProduct/${product._id}`}>
-                                    <button className="btn btn-primary bg-[#800000]">Update</button>
+                                        <button className="btn btn-primary bg-[#800000]">Update</button>
 
                                     </Link>
                                 </div>

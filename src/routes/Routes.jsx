@@ -10,6 +10,7 @@ import BrandProducts from "../components/BrandProducts";
 import Product from "../components/Product";
 import UpdateProduct from "../components/UpdateProduct";
 import MyCart from "../pages/Mycart";
+import NotFound from "../pages/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <Home />,
+        },
+        {
+            path:'*',
+            element:<NotFound></NotFound>
+
         },
         {
             path: '/login',
