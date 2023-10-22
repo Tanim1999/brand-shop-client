@@ -4,6 +4,9 @@ import Error from "../components/Error";
 import Home from "../pages/Home";
 import Register from "../components/Register";
 import Login from "../components/Login";
+import PrivateRoute from "../components/Privateroute";
+import AddProducts from "../pages/Addproducts";
+import BrandProducts from "../components/BrandProducts";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +26,18 @@ const router = createBrowserRouter([
         {   
             path:"/register",
             element: <Register></Register>,
-        }
+        },
+       {path: '/addProducts',
+       element: <PrivateRoute>
+           <AddProducts></AddProducts>
+       </PrivateRoute>,} ,
+       {
+        path: '/brandProducts/:brandName',
+        element: <PrivateRoute>
+            <BrandProducts></BrandProducts>
+        </PrivateRoute>,
+        loader: () => fetch('http://localhost:5500/product')
+    },
       ],
     },
   ]);

@@ -26,7 +26,7 @@ const Header = () => {
             <li> <NavLink to='/'> Home</NavLink></li>
             <li> <NavLink to='/register'> Register</NavLink></li>
             
-            <li> <NavLink to='/faq'> Faq</NavLink></li>
+            <li> <NavLink to='/addProducts'>Add-Products</NavLink></li>
         </>
     return (
         <div className="navbar bg-[#800000] text-white">
@@ -64,14 +64,14 @@ const Header = () => {
                     <>
                     <span className='hidden md:inline'>{user.displayName}</span> 
                         <Link to='/login'>
-                    <button onClick={handleSignout} className='btn bg-red-600 text-white font-semibold'>Sign out</button>
+                    <button onClick={handleSignout} className='btn bg-[#FF5D5D] text-white font-semibold'>Sign out</button>
                     </Link>
                     </>
                      
                     
                     :
                     <Link to='/login'>
-                    <button className='btn bg-red-600 text-white font-semibold'>Login</button>
+                    <button className='btn bg-[#FF5D5D] text-white font-semibold'>Login</button>
                 </Link>
                 }
                 
