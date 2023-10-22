@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "./provider/Authprovider";
 import { useContext } from "react";
 import Swal from "sweetalert2";
@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const Product = () => {
     const products = useLoaderData()
+    const navigate = useNavigate()
     
 
 
@@ -38,6 +39,8 @@ const handleAddToCart = async () => {
                 icon: 'success',
                 confirmButtonText: 'Okay'
               })
+              navigate('/myCart')
+
         } else {
             console.error('Failed to add item to cart.');
         }
