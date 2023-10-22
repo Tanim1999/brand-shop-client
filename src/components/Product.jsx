@@ -1,4 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { AuthContext } from "./provider/Authprovider";
+import { useContext } from "react";
+import Swal from "sweetalert2";
 
 
 const Product = () => {
@@ -9,6 +12,39 @@ const Product = () => {
     const { _id } = useParams();
     
     const product = products.filter(product => product._id === _id);
+
+    const { user } = useContext(AuthContext);
+
+const handleAddToCart = async () => {
+    const cartItem = {
+        userId: user.uid, 
+        productId: product[0]._id, 
+        quantity: 1, 
+    };
+
+    try {
+        const response = await fetch('http://localhost:5500/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cartItem),
+        });
+
+        if (response.ok) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Added to my cart successfully',
+                icon: 'success',
+                confirmButtonText: 'Okay'
+              })
+        } else {
+            console.error('Failed to add item to cart.');
+        }
+    } catch (error) {
+        console.error('Error adding item to cart:', error);
+    }
+};
     
     
 
@@ -29,7 +65,7 @@ const Product = () => {
 
                                 
                                 <div className="card-actions">
-                                    <button className="btn btn-primary bg-[#800000]">Add to cart</button>
+                                    <button onClick={handleAddToCart} className="btn btn-primary bg-[#800000]">Add to cart</button>
                                 </div>
                                 
                             </div>

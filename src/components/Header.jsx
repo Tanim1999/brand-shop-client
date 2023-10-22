@@ -27,6 +27,8 @@ const Header = () => {
             <li> <NavLink to='/register'> Register</NavLink></li>
             
             <li> <NavLink to='/addProducts'>Add-Products</NavLink></li>
+            <li> <NavLink to='/myCart'>My-Carts</NavLink></li>
+
         </>
     return (
         <div className="navbar bg-[#800000] text-white">

@@ -81,7 +81,10 @@ const BrandProducts = () => {
                     </div>
                 </div>
             </div>
-            <div className="grid my-10 grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <p className="text-3xl font-bold text-[#800000] my-10 text-center">
+                Products
+            </p>
+            <div className="grid gap-5 my-10  grid-cols-1 md:grid-cols-2 max-w-fit mx-auto ">
 
                 {filteredProducts.map(product => (
                     < >
