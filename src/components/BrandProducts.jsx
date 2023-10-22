@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 
 const BrandProducts = () => {
@@ -82,10 +82,10 @@ const BrandProducts = () => {
                 </div>
             </div>
             <div className="grid my-10 grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-            
-                 {filteredProducts.map(product => (
-                < >
-                    
+
+                {filteredProducts.map(product => (
+                    < >
+
                         <div className="card w-96 h-[30 rem] bg-[#FF5D5D] shadow-xl">
                             <figure className="px-10 pt-10 h-60 ">
                                 <img src={product.image} alt="Shoes" className="rounded-xl h-60 w-80" />
@@ -94,15 +94,23 @@ const BrandProducts = () => {
                                 <h2 className="card-title text-[#800000] font-bold">{product.name}</h2>
                                 <p>{product.shortDescription}</p>
                                 <p><span className="text-xl font-bold text-[#800000]">Price:</span>{product.price}</p>
-                                <div className="card-actions">
-                                    <button className="btn btn-primary bg-[#800000]">Buy Now</button>
+                                <div className=" card-actions">
+                                    <Link to={`product/${product._id}`}>
+
+                                        <button className="btn btn-primary bg-[#800000]">Details</button>
+
+                                    </Link>
+                                    <Link>
+                                    <button className="btn btn-primary bg-[#800000]">Update</button>
+
+                                    </Link>
                                 </div>
                             </div>
                         </div>
-                    
-                </>
-            
-            ))}
+
+                    </>
+
+                ))}
             </div>
         </div>
     );
