@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "./provider/Authprovider";
 import { signInWithPopup } from "firebase/auth";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -24,7 +25,12 @@ const Login = () => {
 
         .then(result => {
             console.log(result.user)
-            toast('Log in successfully')
+            Swal.fire({
+                title: 'Success!',
+                text: 'Logged in successfully',
+                icon: 'success',
+                confirmButtonText: 'Okay'
+              })
             e.target.reset()
             
             navigate('/')

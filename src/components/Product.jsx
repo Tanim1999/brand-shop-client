@@ -66,6 +66,8 @@ const handleAddToCart = async () => {
                                 
                                 <p><span className="text-xl font-bold text-[#800000]">Ratings:</span>{product[0].rating}</p>
 
+                                <p><span className="text-xl font-bold text-[#800000]">Type:</span>{product[0].type}</p>
+
                                 
                                 <div className="card-actions">
                                     <button onClick={handleAddToCart} className="btn btn-primary bg-[#800000]">Add to cart</button>
