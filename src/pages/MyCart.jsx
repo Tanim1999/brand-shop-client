@@ -1,18 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../components/provider/Authprovider";
-import { Link, useLoaderData, useNavigate} from "react-router-dom";
+import { Link, useLoaderData, } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 
 const MyCart = () => {
-    
+
     const { user } = useContext(AuthContext);
     const [cartItems, setCartItems] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const navigate = useNavigate()
+    const products = useLoaderData();
+    
 
-    const handleDelete = _id =>{
+    const handleDelete = _id => {
         console.log(_id)
         Swal.fire({
             title: 'Are you sure?',
@@ -22,34 +23,49 @@ const MyCart = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-            
-                
-            fetch(`http://localhost:5500/cart/${user.uid}/${_id}`,
-            {method:'DELETE'})
-            .then(res=>res.json())
-            .then(data=>{
-                console.log(data);
-                if(data.deletedCount>0){
-                    Swal.fire(
-                        'Deleted!',
-                        'Your product has been deleted.',
-                        'success'
-                      )
-                      navigate('/')                    
-                      
-                }
-            })
+
+
+                fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/cart/${user.uid}/${_id}`,
+                    { method: 'DELETE' })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your product has been deleted.',
+                                'success'
+                            )
+                              
+                            const fetchCartItems = async () => {
+                                try {
+                                    const response = await fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/cart/${user.uid}`);
+                                    if (response.ok) {
+                                        const data = await response.json();
+                                        setCartItems(data);
+                                    } else {
+                                        console.error('Failed to fetch cart items.');
+                                    }
+                                } catch (error) {
+                                    console.error('Error fetching cart items:', error);
+                                }
+                            };
+                            fetchCartItems();
+                             
+                            
+                        }
+                    })
             }
-          })
+        })
     }
-    
+
 
     useEffect(() => {
         const fetchCartItems = async () => {
             try {
-                const response = await fetch(`http://localhost:5500/cart/${user.uid}`);
+                const response = await fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/cart/${user.uid}`);
                 if (response.ok) {
                     const data = await response.json();
                     setCartItems(data);
@@ -64,17 +80,17 @@ const MyCart = () => {
         if (user) {
             fetchCartItems();
         }
-    }, []);
+    }, [cartItems, user]);
 
-    const products = useLoaderData();
+
 
 
     useEffect(() => {
-        if (cartItems.length > 0 && products.length > 0) {
-            const filteredProducts = products.filter((product) =>
+        if (cartItems.length >= 0 && products.length >= 0) {
+            const filteredProduct = products.filter((product) =>
                 cartItems.some((cartItem) => cartItem.productId === product._id)
             );
-            setFilteredProducts(filteredProducts);
+            setFilteredProducts(filteredProduct);
         }
     }, [cartItems, products]);
 
@@ -107,9 +123,9 @@ const MyCart = () => {
 
                                 </Link>
 
-                                <button 
-                                onClick={()=>handleDelete(product._id)}
-                                className="btn btn-primary bg-[#800000]">delete</button>
+                                <button
+                                    onClick={() => handleDelete(product._id)}
+                                    className="btn btn-primary bg-[#800000]">delete</button>
 
 
                             </div>

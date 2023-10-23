@@ -15,7 +15,7 @@ const AddProducts = () => {
         const newProduct = { image, name, brandName, type, price, shortDescription, rating }
         console.log(newProduct)
 
-        fetch('http://localhost:5500/product', {
+        fetch('https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -46,7 +46,7 @@ const AddProducts = () => {
                 Add Products
             </h3>
             <form onSubmit={handleAddProducts} className="card-body max-w-[80%] mx-auto">
-                <div className="flex justify-center gap-5">
+                <div className="lg:flex justify-center gap-5">
                     <div className="flex-1">
                         <div className="form-control">
                             <label className="label">

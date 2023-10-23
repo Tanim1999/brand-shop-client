@@ -13,7 +13,7 @@ const Brands = () => {
             <div className='my-10'>
                 <h2 className="text-center font-bold text-[#800000] text-3xl">Brands</h2>
             </div>
-            <div className="grid max-w-6xl mx-auto gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid  max-w-fit mx-auto gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {brands.map(brand=> <Brand key={brands.brandName} brand={brand} ></Brand>)}
             </div>
         </div>

@@ -22,7 +22,7 @@ const UpdateProduct = () => {
         console.log(updatedProduct)
         console.log(_id)
 
-        fetch(`http://localhost:5500/product/${_id}`, {
+        fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/product/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -54,7 +54,7 @@ const UpdateProduct = () => {
                Update Product
             </h3>
             <form onSubmit={handleUpdateProducts} className="card-body max-w-[80%] mx-auto">
-                <div className="flex justify-center gap-5">
+                <div className="lg:flex justify-center gap-5">
                     <div className="flex-1">
                         <div className="form-control">
                             <label className="label">

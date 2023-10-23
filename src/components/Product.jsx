@@ -24,7 +24,7 @@ const handleAddToCart = async () => {
     };
 
     try {
-        const response = await fetch('http://localhost:5500/cart', {
+        const response = await fetch('https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/cart', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

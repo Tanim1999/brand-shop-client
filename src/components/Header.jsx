@@ -43,7 +43,7 @@ const Header = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-3xl font-sans font-bold">Gadget Hub</a>
+                <a className="btn hidden lg:inline btn-ghost normal-case text-3xl font-sans font-bold">Gadget Hub</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className=" menu-horizontal gap-5 font-bold text-xl  px-1">
@@ -65,7 +65,7 @@ const Header = () => {
                     user?
                      
                     <>
-                    <span className='hidden md:inline'>{user.displayName}</span> 
+                    <span >{user.displayName}</span> 
                         <Link to='/login'>
                     <button onClick={handleSignout} className='btn bg-[#FF5D5D] text-white font-semibold'>Sign out</button>
                     </Link>
