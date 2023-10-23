@@ -3,6 +3,7 @@ import {  Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./provider/Authprovider";
 import {BiSolidUserCircle} from 'react-icons/bi'
 import { toast } from "react-toastify";
+import ThemeToggle from "./ThemeToggle";
 
 
 const Header = () => {
@@ -76,7 +77,7 @@ const Header = () => {
                     <button className='btn bg-[#FF5D5D] text-white font-semibold'>Login</button>
                 </Link>
                 }
-                
+                <ThemeToggle></ThemeToggle>
             </div>
         
         </div>
