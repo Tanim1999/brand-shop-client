@@ -22,7 +22,7 @@ const UpdateProduct = () => {
         console.log(updatedProduct)
         console.log(_id)
 
-        fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/product/${_id}`, {
+        fetch(`https://brand-shop-server-three-iota.vercel.app/product/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

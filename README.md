@@ -27,4 +27,4 @@
 
 ## Live Link
 
-Explore the website: https://gadjet-hub-99e61.web.app/
+Explore the website: [Brand-shop](https://6574467d40c3bb49ce950855--incomparable-crepe-93232c.netlify.app/)

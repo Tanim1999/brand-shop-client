@@ -15,7 +15,7 @@ const AddProducts = () => {
         const newProduct = { image, name, brandName, type, price, shortDescription, rating }
         console.log(newProduct)
 
-        fetch('https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/product', {
+        fetch('https://brand-shop-server-three-iota.vercel.app/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

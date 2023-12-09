@@ -5,13 +5,14 @@ import Swal from "sweetalert2";
 
 
 
+
 const MyCart = () => {
 
     const { user } = useContext(AuthContext);
     const [cartItems, setCartItems] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const products = useLoaderData();
-    
+
 
     const handleDelete = _id => {
         console.log(_id)
@@ -27,7 +28,7 @@ const MyCart = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/cart/${user.uid}/${_id}`,
+                fetch(`https://brand-shop-server-three-iota.vercel.app/cart/${user.uid}/${_id}`,
                     { method: 'DELETE' })
                     .then(res => res.json())
                     .then(data => {
@@ -38,10 +39,10 @@ const MyCart = () => {
                                 'Your product has been deleted.',
                                 'success'
                             )
-                              
+
                             const fetchCartItems = async () => {
                                 try {
-                                    const response = await fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/cart/${user.uid}`);
+                                    const response = await fetch(`https://brand-shop-server-three-iota.vercel.app/cart/${user.uid}`);
                                     if (response.ok) {
                                         const data = await response.json();
                                         setCartItems(data);
@@ -53,8 +54,8 @@ const MyCart = () => {
                                 }
                             };
                             fetchCartItems();
-                             
-                            
+
+
                         }
                     })
             }
@@ -65,7 +66,7 @@ const MyCart = () => {
     useEffect(() => {
         const fetchCartItems = async () => {
             try {
-                const response = await fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/cart/${user.uid}`);
+                const response = await fetch(`https://brand-shop-server-three-iota.vercel.app/cart/${user.uid}`);
                 if (response.ok) {
                     const data = await response.json();
                     setCartItems(data);
@@ -87,11 +88,14 @@ const MyCart = () => {
 
     useEffect(() => {
         if (cartItems.length >= 0 && products.length >= 0) {
+
             const filteredProduct = products.filter((product) =>
                 cartItems.some((cartItem) => cartItem.productId === product._id)
             );
             setFilteredProducts(filteredProduct);
         }
+        // const filteredProduct = products.filter((product)=> cartItems.productId==product._id);
+        // setFilteredProducts(filteredProduct)
     }, [cartItems, products]);
 
     return (
@@ -126,6 +130,7 @@ const MyCart = () => {
                                 <button
                                     onClick={() => handleDelete(product._id)}
                                     className="btn btn-primary bg-[#800000]">delete</button>
+                                
 
 
                             </div>

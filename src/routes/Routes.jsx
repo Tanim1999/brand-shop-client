@@ -45,27 +45,27 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
             <BrandProducts></BrandProducts>
         </PrivateRoute>,
-        loader: () => fetch('https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/product')
+        loader: () => fetch('https://brand-shop-server-three-iota.vercel.app/product')
     },
        {
         path: '/brandProducts/:brandName/product/:_id',
         element: <PrivateRoute>
             <Product></Product>
         </PrivateRoute>,
-        loader: () => fetch('https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/product')
+        loader: () => fetch('https://brand-shop-server-three-iota.vercel.app/product')
     },
     {
         path:'/updateProduct/:id',
         element:<PrivateRoute>
         <UpdateProduct></UpdateProduct>
     </PrivateRoute>  ,
-        loader: ({params})=> fetch(`https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/product/${params.id}`)
+        loader: ({params})=> fetch(`https://brand-shop-server-three-iota.vercel.app/product/${params.id}`)
     },
     {path: '/myCart',
        element: <PrivateRoute>
            <MyCart></MyCart>
        </PrivateRoute>,
-       loader: () => fetch('https://brand-shop-server-37q6aggdw-tanims-projects-44b97d8f.vercel.app/product')
+       loader: () => fetch('https://brand-shop-server-three-iota.vercel.app/product')
     }
       ],
     },
